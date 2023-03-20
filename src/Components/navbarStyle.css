@@ -1,0 +1,25 @@
+
+.nav-link {
+    color: green;
+}
+
+.nav-item>a:hover {
+    color: rgb(1, 2, 66);
+}
+
+/*code to change background color*/
+.navbar-nav>.active>a {
+    background-color: #0c0338;
+    
+    
+}
+@media all and (min-width: 992px) {
+	.navbar .nav-item .dropdown-menu{ display: none; }
+    .navbar .nav-item .dropdown-toggle::after {
+        content: none;
+    }
+	.navbar .nav-item:hover .nav-link{   }
+	.navbar .nav-item:hover .dropdown-menu{ display:block; }
+	.navbar .nav-item .dropdown-menu{ margin-top:0; color:#DCDCDC }
+    .navbar .nav-item .dropdown-menu .dropdown-item {color: black;  font-size: small; font-style:italic;}
+}	

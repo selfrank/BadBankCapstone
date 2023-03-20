@@ -1,16 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
-
 var express = require('express');
 var app     = express();
 var cors    = require('cors');
-var dal     = require('./dal');
+var dal     = require('./src/dal.js');
 const e = require('express');
 
+// used to serve static files from public directory
 app.use(express.static('public'));
 app.use(cors());
 
@@ -107,15 +101,3 @@ app.get('/account/all', function (req, res) {
 var port = 3000;
 app.listen(port);
 console.log('Running on port: ' + port);
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
