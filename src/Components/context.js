@@ -19,3 +19,10 @@ export const Card=(props)=>{
     </div>      
   );    
 }
+export const CurrentUser=(props)=>{
+  <div>
+    {props.user.email}
+    {props.user.name}
+    {props.user.balance}
+  </div>
+}
