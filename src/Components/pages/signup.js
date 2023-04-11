@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import firebaseService from "../firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import axios from "axios";
 
 export default function SignUpPage() {
@@ -13,12 +15,16 @@ export default function SignUpPage() {
 
   const navigate = useHistory();
 
+  
+
   const handleChange = (e) => {
     setFields({ ...fields, [e.target.name]: e.target.value });
+    
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+		
     if (fields.password.length < 6) {
       return setError("Password must be at least 6 characters in length.");
     }
@@ -34,6 +40,17 @@ export default function SignUpPage() {
       .then(text => {
       const data = JSON.parse(text);
       const message = {data};
+        try{
+          createUserWithEmailAndPassword(
+            firebaseService.auth,
+            fields.email,
+            fields.password)
+        } catch (err) {
+          console.log(err);
+          setError("Invalid email address or password.");
+        }
+        
+          
       return navigate("/signin", {
         replace: true,
         state: {
