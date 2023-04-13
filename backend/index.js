@@ -4,7 +4,14 @@ var app     = express();
 var cors    = require('cors');
 var dal     = require('./dal.js');
 const e = require('express');
+var path = require('path');
 
+//for deployment
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 // used to serve static files from public directory
 app.use(express.static('public'));
 app.use(cors());
