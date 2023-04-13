@@ -51,6 +51,8 @@ export default function Deposit(){
     const [loadingUser, setLoadingUser] = useState(true);
     const [user, setUser] = useState(null);
     const [userEmail, setUserEmail] = useState();
+    const [currentBalance, setCurrentBalance] = useState();
+    const [currentUsername, setCurrentUsername] = useState();
     const getUser = async () => {
     const email = await firebaseService.auth.currentUser.email;
     fetch(`http://localhost:3001/account/findOne/${email}`)
@@ -63,6 +65,8 @@ export default function Deposit(){
         console.log("user line 24",user)
         setRecord(data);
         setUserEmail(data.email);
+        setCurrentBalance(data.balance);
+        setCurrentUsername(data.name);
       }
      catch (err) {
       console.error(err);
@@ -95,8 +99,8 @@ export default function Deposit(){
  
     return(<>
   
-      Email<br/>
-      <p>{userEmail}</p><br/>
+  <h5>{currentUsername}'s current balance: <br/>
+    ${currentBalance}</h5><br/>
         
       Amount<br/>
       <input type="number" 

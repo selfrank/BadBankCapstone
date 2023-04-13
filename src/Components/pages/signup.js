@@ -2,9 +2,23 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import firebaseService from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import {Card} from "../context";
 import axios from "axios";
 
+
+
 export default function SignUpPage() {
+
+  return (<>
+    <Card
+      bgcolor="secondary"
+      header="Create Account"  
+      body={SignUp()}
+    />
+    </>
+  )
+  }
+  function SignUp(){
   const [fields, setFields] = useState({
     email: "",
     name: "",
@@ -67,7 +81,7 @@ export default function SignUpPage() {
 
   return (
     <div>
-      <h1>Sign Up</h1>
+      
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="email">Email Address</label>

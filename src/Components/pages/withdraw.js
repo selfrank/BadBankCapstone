@@ -96,7 +96,7 @@ function WithdrawForm(props){
   return(<>
 
   
-    <h5>{currentUsername}'s Current Balance: <br/>
+    <h5>{currentUsername}'s current balance: <br/>
     ${currentBalance}</h5><br/>
 
     Amount<br/>

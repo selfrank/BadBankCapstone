@@ -1,11 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import {useState, useEffect} from "react";
 import firebaseService from "../firebase";
 
 export default function AuthorizedNav() {
+  const history = useHistory();
   const logUserOut = async () => {
     await firebaseService.auth.signOut();
   };
+  const moveToHome=()=>{
+    history.push("/")
+  }
+  function logOut(){
+    moveToHome();
+    logUserOut();
+  }
   const [loadingUser, setLoadingUser] = useState(true);
   const [user, setUser] = useState(null);
   const [record, setRecord]=useState();
@@ -48,21 +56,16 @@ export default function AuthorizedNav() {
         </li>
         <li className="nav-item">
           <a className="nav-link" href="/withdraw/">Withdraw</a>
-        </li>
+        </li>    
         <li className="nav-item">
-          <a className="nav-link" href="/alldata/">AllData</a>
-        </li>     
-        <li className="nav-item">
-          <button type="button" class="btn btn-light" 
-            onClick={
-              logUserOut
-            }
+          <button type="button" className="btn btn-light" 
+            onClick={logOut}
           >
             Sign Out
           </button>
         </li>
       </ul>
-      <span class="navbar-text">
+      <span className="navbar-text">
           <a className="nav-link" href="/mydata/">{username}'s Details</a>
     </span>
       </div>

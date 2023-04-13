@@ -3,8 +3,21 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { useLocation, useHistory } from "react-router-dom";
 import firebaseService from "../firebase";
+import {Card} from "../context";
 
-export default function SignInPage() {
+export default function SignInPage(){
+
+  return (<>
+    <Card
+      bgcolor="secondary"
+      header="Sign In"  
+      body={SignInBody()}
+    />
+    </>
+  )
+  }
+
+function SignInBody(){
   const location = useLocation();
   const history = useHistory();
   const [fields, setFields] = useState({
@@ -28,9 +41,11 @@ export default function SignInPage() {
         fields.password
       );
       if (user) {
-        setAuthorized();
         history.push("/");
+        console.log("pushed")
+        setAuthorized();
         console.log("Called");
+        
       }
     } catch (err) {
       console.log(err);
@@ -43,7 +58,7 @@ export default function SignInPage() {
       {location.state && location.state.message ? (
         <p style={{ color: "green" }}>{location.state.message}</p>
       ) : null}
-      <h1>Sign In</h1>
+    
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="email">Email Address</label>

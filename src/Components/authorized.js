@@ -23,6 +23,7 @@ export default function UnauthorizedRoutes() {
           <Route path="/deposit2/:id" component={Deposit}/>
           <Route path="/withdraw/:id" component={Withdraw} />
           <Route exact path = "/mydata/" component = {MyData} />
+          <Route exact path="/signin/" component={Home} />
         <Route
           path="*"
           element={

@@ -1,18 +1,33 @@
 import { useEffect, useState } from "react";
 import firebaseService from "../firebase";
 import {Link} from "react-router-dom";
-import axios from "axios";
+import {Card} from '../context';
 
 const Record = (props) => (
   <><br/>
   <h4>Quick Links:</h4><br/>
-      <Link className="btn btn-link" to={`/withdraw/${props.record._id}`}>Withdraw</Link> |
-      <Link className="btn btn-link" to={`/deposit2/${props.record._id}`}>Deposit</Link> |
+      <Link className="btn btn-link text-light" to={`/withdraw/${props.record._id}`}>Withdraw</Link> |
+      <Link className="btn btn-link text-light" to={`/deposit2/${props.record._id}`}>Deposit</Link> |
       </>);
 
+export default function DashboardPage(){
+ 
 
+return (<>
+  <Card
+    bgcolor="info"
+    header="Dashboard"
+    
+
+    body={Dashboard()}
+  />
+  </>
+)
+}
       
-export default function DashboardPage() {
+function Dashboard() {
+
+  
   const [loadingUser, setLoadingUser] = useState(true);
   const [user, setUser] = useState(null);
   const [record, setRecord]=useState();
@@ -41,6 +56,7 @@ export default function DashboardPage() {
 
   return (
     <>
+    <br/>
       <h1>Dashboard</h1>
       {loadingUser ? (
         <p>Loading User</p>

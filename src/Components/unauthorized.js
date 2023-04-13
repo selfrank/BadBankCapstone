@@ -4,8 +4,8 @@ import Home from "./pages/home";
 import SignInPage from "./pages/signin";
 import SignUpPage from "./pages/signup";
 import CreateAccount from "./pages/createaccount";
-
-export default function UnauthorizedRoutes() {
+import DashboardPage from "./pages/dashboard";
+export default function UnauthorizedRoutes() {  
   return (
     <BrowserRouter>
       <UnauthorizedNav />
@@ -15,6 +15,7 @@ export default function UnauthorizedRoutes() {
         <Route exact path="/signup/" component={SignUpPage} />
         <Route exact path="/signin/" component={SignInPage} />
         <Route exact path="/create/" componnet={CreateAccount}/>
+        <Route exact path="/myaccount/" component={Home}/>
         <Route
           path="*"
           element={

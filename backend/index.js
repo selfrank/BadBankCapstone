@@ -1,4 +1,4 @@
-import userRouter from "./src/user.js"
+//import userRouter from "./src/user.js"
 var express = require('express');
 var app     = express();
 var cors    = require('cors');
@@ -8,7 +8,7 @@ const e = require('express');
 // used to serve static files from public directory
 app.use(express.static('public'));
 app.use(cors());
-app.use("/api/user", userRouter);
+//app.use("/api/user", userRouter);
 // create user account
 app.get('/account/create/:name/:email/:password', function (req, res) {
 
