@@ -3,6 +3,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { useLocation, useHistory } from "react-router-dom";
 import firebaseService from "../firebase";
+import { GoogleAuthProvider, signInWithPopup, getAuth } from "firebase/auth";
 import {Card} from "../context";
 
 export default function SignInPage(){
@@ -53,6 +54,26 @@ function SignInBody(){
     }
   };
 
+  const googleSignIn = (e)=>{
+    //e.preventDefault();
+    const auth = getAuth();
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        console.log("google user: ", user);
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        console.error(error);
+      });
+
+  }
+
   return (
     <main>
       {location.state && location.state.message ? (
@@ -89,6 +110,9 @@ function SignInBody(){
           <button type="submit">Sign In</button>
         </div>
       </form>
+      <div style={{ marginTop: "1rem" }}>
+          <button type="submit" onClick={googleSignIn()}>Google Signin</button>
+        </div>
     </main>
   );
 }
