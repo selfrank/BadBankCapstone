@@ -54,7 +54,7 @@ function SignInBody(){
     }
   };
 
-  const googleSignIn = (e)=>{
+  const googleSignIn = (e) => {
     //e.preventDefault();
     const auth = getAuth();
     const provider = new GoogleAuthProvider();
@@ -72,7 +72,7 @@ function SignInBody(){
         console.error(error);
       });
 
-  }
+  };
 
   return (
     <main>
@@ -111,7 +111,7 @@ function SignInBody(){
         </div>
       </form>
       <div style={{ marginTop: "1rem" }}>
-          <button type="submit" onClick={googleSignIn()}>Google Signin</button>
+          <button type="submit" onClick={googleSignIn}>Google Signin</button>
         </div>
     </main>
   );

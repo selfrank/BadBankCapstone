@@ -3,8 +3,13 @@ var express = require('express');
 var app     = express();
 var cors    = require('cors');
 var dal     = require('./dal.js');
+//const functions = require("firebase-functions");
 const e = require('express');
 var path = require('path');
+require("dotenv").config({ path: "./config.env" });
+const dbo=require("./conn.js")
+
+
 
 //for deployment
 app.use(express.static(path.join(__dirname, 'build')));
@@ -142,6 +147,15 @@ app.get('/account/all', function (req, res) {
 app.get('/api', (req, res)=> {
     res.json({message: "Hello from server!"});
 }); 
-var port = 3001;
-app.listen(port);
-console.log('Running on port: ' + port);
+var port =process.env.PORT;
+app.listen(port, () => {
+    // perform a database connection when server starts
+    dbo.connectToServer(function (err) {
+      if (err) console.error(err);
+  
+    });
+    console.log(`Server is running on port: ${port}`);
+    console.log(`Public server is port: ${process.env.PORT}`)
+  });
+//exports.app = functions.https.onRequest(app);
+
