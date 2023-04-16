@@ -20,7 +20,7 @@ export default function AuthorizedNav() {
   const [username, setUsername]=useState();
   const getUser = async () => {
     const email = await firebaseService.auth.currentUser.email;
-    fetch(`http://localhost:3001/account/findOne/${email}`)
+    fetch(`http://161.35.96.121:3001/account/findOne/${email}`)
     .then(response => response.text())
     .then (text=>{
       try {

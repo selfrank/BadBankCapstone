@@ -49,7 +49,7 @@ export default function SignUpPage() {
     let password= fields.password;
     let name=fields.name;
     try {
-      const req =  fetch(`http://localhost:3001/account/create/${name}/${email}/${password}`)
+      const req =  fetch(`http://161.35.96.121:3001/account/create/${name}/${email}/${password}`)
       .then(response => response.text())
       .then(text => {
       const data = JSON.parse(text);

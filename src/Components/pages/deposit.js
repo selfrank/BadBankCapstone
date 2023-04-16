@@ -55,7 +55,7 @@ export default function Deposit(){
     const [currentUsername, setCurrentUsername] = useState();
     const getUser = async () => {
     const email = await firebaseService.auth.currentUser.email;
-    fetch(`http://localhost:3001/account/findOne/${email}`)
+    fetch(`http://161.35.96.121:3001/account/findOne/${email}`)
     .then(response => response.text())
     .then (text=>{
       try {
@@ -82,7 +82,7 @@ export default function Deposit(){
     
     function handle(){
       const email = userEmail;
-      fetch(`http://localhost:3001/account/update/${email}/${amount}`)
+      fetch(`http://161.35.96.121:3001/account/update/${email}/${amount}`)
       .then(response => response.text())
       .then(text => {
           try {
